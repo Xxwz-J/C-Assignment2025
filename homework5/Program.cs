@@ -116,7 +116,7 @@ namespace homework5
             if (!found) { throw new InvalidOperationException("NO Such Order!"); }
         }
 
-        public void Search(Func<Order, bool> search)
+        public List<Order> Search(Func<Order, bool> search)
         {
             var searchlist = orders.Where(search)
                     .OrderBy(o => o.TotalSum)
@@ -125,7 +125,7 @@ namespace homework5
             {
                 throw new InvalidOperationException("No Such Order!");
             };
-            searchlist.ForEach(Console.WriteLine);
+            return searchlist;
         }
         public void Sort() => Sort((o1, o2) =>
             string.Compare(o1.ID, o2.ID, StringComparison.Ordinal) > 0);
@@ -152,6 +152,10 @@ namespace homework5
 
     internal class Program
     {
+        static void Main(string[] args)
+        {
+            
+        }
     }
 
 }
