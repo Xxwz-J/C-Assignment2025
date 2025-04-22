@@ -26,21 +26,19 @@ namespace homework6
             
         }
        
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
 
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
-            //  bdsOrder.DataSource = orderService.orders.Where(s=>
-            // s.Customer.Name == textBox1.Text || textBox1.Text=="");
-            bdsOrder.DataSource = orderService.Search(o => o.Customer.Name == textBox1.Text || textBox1.Text == "");
+            string selectedValue = comboBox1.SelectedValue.ToString();
+            if (selectedValue.Equals("OrderID"))
+                bdsOrder.DataSource = orderService.Search(o => o.OrderID.ToString() == textBox1.Text || textBox1.Text == "");
+
+            else if (selectedValue.Equals("CustomerName"))
+                bdsOrder.DataSource = orderService.Search(o => o.Customer.Name == textBox1.Text || textBox1.Text == "");
+
+            else if (selectedValue.Equals("Amount(more than)"))
+                bdsOrder.DataSource = orderService.Search(o => o.TotalSum >= int.Parse(textBox1.Text) || textBox1.Text == "");
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -49,6 +47,16 @@ namespace homework6
         }
 
         private void Orderview_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

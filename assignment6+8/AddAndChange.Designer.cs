@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.bdsCustomer = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsOrder = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.labelID = new System.Windows.Forms.Label();
@@ -42,33 +40,41 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonChange = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
-            this.bdsDetails = new System.Windows.Forms.BindingSource(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.buttonSearch = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button_change = new System.Windows.Forms.Button();
             this.buttonAddDetails = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_add = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Orderview = new System.Windows.Forms.DataGridView();
             this.OrderID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.customerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalSumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.Product = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Quantities = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsCustomer)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsOrder)).BeginInit();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.detailIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.orderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.quantitiesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsOrder = new System.Windows.Forms.BindingSource(this.components);
+            this.customerDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalSumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bdsCustomer = new System.Windows.Forms.BindingSource(this.components);
+            this.bdsDetails = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -79,16 +85,10 @@
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsCustomer)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDetails)).BeginInit();
             this.SuspendLayout();
-            // 
-            // bdsCustomer
-            // 
-            this.bdsCustomer.DataSource = this.bdsOrder;
-            // 
-            // bdsOrder
-            // 
-            this.bdsOrder.DataSource = typeof(homework5.Order);
-            this.bdsOrder.CurrentChanged += new System.EventHandler(this.bdsOrder_CurrentChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -98,12 +98,13 @@
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1587, 785);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1785, 942);
             this.tableLayoutPanel2.TabIndex = 9;
             // 
             // tableLayoutPanel1
@@ -118,40 +119,42 @@
             this.tableLayoutPanel1.Controls.Add(this.textBoxCustomerID, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBoxID, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 4);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1581, 622);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1779, 745);
             this.tableLayoutPanel1.TabIndex = 6;
             // 
             // labelID
             // 
             this.labelID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelID.AutoSize = true;
-            this.labelID.Location = new System.Drawing.Point(383, 96);
+            this.labelID.Location = new System.Drawing.Point(431, 115);
             this.labelID.Name = "labelID";
-            this.labelID.Size = new System.Drawing.Size(23, 15);
+            this.labelID.Size = new System.Drawing.Size(26, 18);
             this.labelID.TabIndex = 1;
             this.labelID.Text = "ID";
             // 
             // textBoxCustomerName
             // 
             this.textBoxCustomerName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxCustomerName.Location = new System.Drawing.Point(1115, 505);
+            this.textBoxCustomerName.Location = new System.Drawing.Point(1255, 606);
+            this.textBoxCustomerName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxCustomerName.Name = "textBoxCustomerName";
-            this.textBoxCustomerName.Size = new System.Drawing.Size(140, 25);
+            this.textBoxCustomerName.Size = new System.Drawing.Size(157, 28);
             this.textBoxCustomerName.TabIndex = 4;
             // 
             // labelCustomerName
             // 
             this.labelCustomerName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCustomerName.AutoSize = true;
-            this.labelCustomerName.Location = new System.Drawing.Point(343, 510);
+            this.labelCustomerName.Location = new System.Drawing.Point(386, 611);
             this.labelCustomerName.Name = "labelCustomerName";
-            this.labelCustomerName.Size = new System.Drawing.Size(103, 15);
+            this.labelCustomerName.Size = new System.Drawing.Size(116, 18);
             this.labelCustomerName.TabIndex = 5;
             this.labelCustomerName.Text = "CustomerName";
             // 
@@ -159,26 +162,28 @@
             // 
             this.labelCustomerID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelCustomerID.AutoSize = true;
-            this.labelCustomerID.Location = new System.Drawing.Point(351, 303);
+            this.labelCustomerID.Location = new System.Drawing.Point(395, 363);
             this.labelCustomerID.Name = "labelCustomerID";
-            this.labelCustomerID.Size = new System.Drawing.Size(87, 15);
+            this.labelCustomerID.Size = new System.Drawing.Size(98, 18);
             this.labelCustomerID.TabIndex = 3;
             this.labelCustomerID.Text = "CustomerID";
             // 
             // textBoxCustomerID
             // 
             this.textBoxCustomerID.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxCustomerID.Location = new System.Drawing.Point(1116, 298);
+            this.textBoxCustomerID.Location = new System.Drawing.Point(1256, 358);
+            this.textBoxCustomerID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxCustomerID.Name = "textBoxCustomerID";
-            this.textBoxCustomerID.Size = new System.Drawing.Size(138, 25);
+            this.textBoxCustomerID.Size = new System.Drawing.Size(155, 28);
             this.textBoxCustomerID.TabIndex = 2;
             // 
             // textBoxID
             // 
             this.textBoxID.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxID.Location = new System.Drawing.Point(1113, 91);
+            this.textBoxID.Location = new System.Drawing.Point(1252, 110);
+            this.textBoxID.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textBoxID.Name = "textBoxID";
-            this.textBoxID.Size = new System.Drawing.Size(145, 25);
+            this.textBoxID.Size = new System.Drawing.Size(163, 28);
             this.textBoxID.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -189,19 +194,21 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.buttonChange, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.buttonAdd, 0, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(497, 656);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(559, 787);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(593, 100);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(667, 120);
             this.tableLayoutPanel3.TabIndex = 9;
             // 
             // buttonChange
             // 
             this.buttonChange.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonChange.Location = new System.Drawing.Point(386, 10);
+            this.buttonChange.Location = new System.Drawing.Point(435, 12);
+            this.buttonChange.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonChange.Name = "buttonChange";
-            this.buttonChange.Size = new System.Drawing.Size(116, 79);
+            this.buttonChange.Size = new System.Drawing.Size(130, 95);
             this.buttonChange.TabIndex = 9;
             this.buttonChange.Text = "Change";
             this.buttonChange.UseVisualStyleBackColor = true;
@@ -209,22 +216,19 @@
             // buttonAdd
             // 
             this.buttonAdd.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonAdd.Location = new System.Drawing.Point(91, 10);
+            this.buttonAdd.Location = new System.Drawing.Point(103, 12);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(113, 79);
+            this.buttonAdd.Size = new System.Drawing.Size(127, 95);
             this.buttonAdd.TabIndex = 8;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = true;
             // 
-            // bdsDetails
-            // 
-            this.bdsDetails.DataMember = "Details";
-            this.bdsDetails.DataSource = this.bdsOrder;
-            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(3, 3);
+            this.splitContainer1.Location = new System.Drawing.Point(3, 4);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -234,43 +238,62 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tableLayoutPanel5);
-            this.splitContainer1.Size = new System.Drawing.Size(1581, 170);
-            this.splitContainer1.SplitterDistance = 556;
+            this.splitContainer1.Size = new System.Drawing.Size(1779, 203);
+            this.splitContainer1.SplitterDistance = 625;
             this.splitContainer1.TabIndex = 3;
             // 
             // tableLayoutPanel4
             // 
-            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnCount = 3;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel4.Controls.Add(this.textBox1, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.buttonSearch, 1, 0);
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 244F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 177F));
+            this.tableLayoutPanel4.Controls.Add(this.comboBox1, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.buttonSearch, 2, 0);
+            this.tableLayoutPanel4.Controls.Add(this.textBox1, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(556, 170);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(625, 203);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
-            // textBox1
+            // comboBox1
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(10, 72);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(413, 25);
-            this.textBox1.TabIndex = 0;
+            this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "OrderID",
+            "CustomerName",
+            "Amount(more than)"});
+            this.comboBox1.Location = new System.Drawing.Point(3, 88);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(198, 26);
+            this.comboBox1.TabIndex = 3;
             // 
             // buttonSearch
             // 
             this.buttonSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSearch.Location = new System.Drawing.Point(436, 47);
+            this.buttonSearch.Location = new System.Drawing.Point(451, 56);
+            this.buttonSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(117, 75);
+            this.buttonSearch.Size = new System.Drawing.Size(171, 90);
             this.buttonSearch.TabIndex = 1;
             this.buttonSearch.Text = "SearchOrder";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(215, 87);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(11, 4, 11, 4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(222, 28);
+            this.textBox1.TabIndex = 0;
             // 
             // tableLayoutPanel5
             // 
@@ -279,58 +302,65 @@
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel5.Controls.Add(this.button2, 2, 0);
-            this.tableLayoutPanel5.Controls.Add(this.buttonAddDetails, 3, 0);
+            this.tableLayoutPanel5.Controls.Add(this.button_change, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.buttonDelete, 1, 0);
-            this.tableLayoutPanel5.Controls.Add(this.button1, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.button_add, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.buttonAddDetails, 3, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1021, 170);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1150, 203);
             this.tableLayoutPanel5.TabIndex = 4;
             // 
-            // button2
+            // button_change
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.Location = new System.Drawing.Point(579, 47);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(117, 75);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "ChangeOrder";
-            this.button2.UseVisualStyleBackColor = true;
+            this.button_change.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button_change.Location = new System.Drawing.Point(651, 56);
+            this.button_change.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_change.Name = "button_change";
+            this.button_change.Size = new System.Drawing.Size(132, 90);
+            this.button_change.TabIndex = 2;
+            this.button_change.Text = "ChangeOrder";
+            this.button_change.UseVisualStyleBackColor = true;
+            this.button_change.Click += new System.EventHandler(this.button2_Click);
             // 
             // buttonAddDetails
             // 
             this.buttonAddDetails.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonAddDetails.Location = new System.Drawing.Point(834, 47);
+            this.buttonAddDetails.Location = new System.Drawing.Point(939, 56);
+            this.buttonAddDetails.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonAddDetails.Name = "buttonAddDetails";
-            this.buttonAddDetails.Size = new System.Drawing.Size(117, 75);
+            this.buttonAddDetails.Size = new System.Drawing.Size(132, 90);
             this.buttonAddDetails.TabIndex = 5;
             this.buttonAddDetails.Text = "AddDetails";
             this.buttonAddDetails.UseVisualStyleBackColor = true;
+            this.buttonAddDetails.Click += new System.EventHandler(this.buttonAddDetails_Click);
             // 
             // buttonDelete
             // 
             this.buttonDelete.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonDelete.Location = new System.Drawing.Point(324, 47);
+            this.buttonDelete.Location = new System.Drawing.Point(364, 56);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(117, 75);
+            this.buttonDelete.Size = new System.Drawing.Size(132, 90);
             this.buttonDelete.TabIndex = 4;
             this.buttonDelete.Text = "DeleteOrder";
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
-            // button1
+            // button_add
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.Location = new System.Drawing.Point(69, 47);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 75);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "AddOrder";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_add.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button_add.Location = new System.Drawing.Point(77, 56);
+            this.button_add.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.button_add.Name = "button_add";
+            this.button_add.Size = new System.Drawing.Size(132, 90);
+            this.button_add.TabIndex = 3;
+            this.button_add.Text = "AddOrder";
+            this.button_add.UseVisualStyleBackColor = true;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -357,7 +387,7 @@
             this.Orderview.Name = "Orderview";
             this.Orderview.RowHeadersWidth = 62;
             this.Orderview.RowTemplate.Height = 30;
-            this.Orderview.Size = new System.Drawing.Size(552, 601);
+            this.Orderview.Size = new System.Drawing.Size(621, 723);
             this.Orderview.TabIndex = 1;
             // 
             // OrderID
@@ -367,22 +397,6 @@
             this.OrderID.MinimumWidth = 8;
             this.OrderID.Name = "OrderID";
             // 
-            // customerDataGridViewTextBoxColumn
-            // 
-            this.customerDataGridViewTextBoxColumn.DataPropertyName = "Customer";
-            this.customerDataGridViewTextBoxColumn.HeaderText = "Customer";
-            this.customerDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.customerDataGridViewTextBoxColumn.Name = "customerDataGridViewTextBoxColumn";
-            this.customerDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // totalSumDataGridViewTextBoxColumn
-            // 
-            this.totalSumDataGridViewTextBoxColumn.DataPropertyName = "TotalSum";
-            this.totalSumDataGridViewTextBoxColumn.HeaderText = "TotalSum";
-            this.totalSumDataGridViewTextBoxColumn.MinimumWidth = 6;
-            this.totalSumDataGridViewTextBoxColumn.Name = "totalSumDataGridViewTextBoxColumn";
-            this.totalSumDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 2;
@@ -391,13 +405,13 @@
             this.tableLayoutPanel6.Controls.Add(this.dataGridView1, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.Orderview, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 178);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 213);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 606F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1581, 605);
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 727F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1779, 727);
             this.tableLayoutPanel6.TabIndex = 4;
             // 
             // dataGridView1
@@ -408,32 +422,25 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Product,
             this.Quantities,
-            this.Total});
+            this.Total,
+            this.detailIDDataGridViewTextBoxColumn,
+            this.orderIDDataGridViewTextBoxColumn,
+            this.orderDataGridViewTextBoxColumn,
+            this.productIDDataGridViewTextBoxColumn,
+            this.productDataGridViewTextBoxColumn,
+            this.quantitiesDataGridViewTextBoxColumn,
+            this.totalDataGridViewTextBoxColumn,
+            this.productNameDataGridViewTextBoxColumn});
             this.dataGridView1.DataMember = "Details";
             this.dataGridView1.DataSource = this.bdsOrder;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(561, 2);
+            this.dataGridView1.Location = new System.Drawing.Point(630, 2);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 30;
-            this.dataGridView1.Size = new System.Drawing.Size(1017, 601);
+            this.dataGridView1.Size = new System.Drawing.Size(1146, 723);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // tableLayoutPanel7
-            // 
-            this.tableLayoutPanel7.ColumnCount = 1;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Controls.Add(this.splitContainer1, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel6, 0, 1);
-            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 2;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.45431F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.54569F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(1587, 785);
-            this.tableLayoutPanel7.TabIndex = 10;
             // 
             // Product
             // 
@@ -458,22 +465,124 @@
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
             // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 1;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.splitContainer1, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.tableLayoutPanel6, 0, 1);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 2;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 22.45431F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 77.54569F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(1785, 942);
+            this.tableLayoutPanel7.TabIndex = 10;
+            // 
+            // detailIDDataGridViewTextBoxColumn
+            // 
+            this.detailIDDataGridViewTextBoxColumn.DataPropertyName = "DetailID";
+            this.detailIDDataGridViewTextBoxColumn.HeaderText = "DetailID";
+            this.detailIDDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.detailIDDataGridViewTextBoxColumn.Name = "detailIDDataGridViewTextBoxColumn";
+            // 
+            // orderIDDataGridViewTextBoxColumn
+            // 
+            this.orderIDDataGridViewTextBoxColumn.DataPropertyName = "OrderID";
+            this.orderIDDataGridViewTextBoxColumn.HeaderText = "OrderID";
+            this.orderIDDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.orderIDDataGridViewTextBoxColumn.Name = "orderIDDataGridViewTextBoxColumn";
+            // 
+            // orderDataGridViewTextBoxColumn
+            // 
+            this.orderDataGridViewTextBoxColumn.DataPropertyName = "Order";
+            this.orderDataGridViewTextBoxColumn.HeaderText = "Order";
+            this.orderDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.orderDataGridViewTextBoxColumn.Name = "orderDataGridViewTextBoxColumn";
+            // 
+            // productIDDataGridViewTextBoxColumn
+            // 
+            this.productIDDataGridViewTextBoxColumn.DataPropertyName = "ProductID";
+            this.productIDDataGridViewTextBoxColumn.HeaderText = "ProductID";
+            this.productIDDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.productIDDataGridViewTextBoxColumn.Name = "productIDDataGridViewTextBoxColumn";
+            // 
+            // productDataGridViewTextBoxColumn
+            // 
+            this.productDataGridViewTextBoxColumn.DataPropertyName = "Product";
+            this.productDataGridViewTextBoxColumn.HeaderText = "Product";
+            this.productDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.productDataGridViewTextBoxColumn.Name = "productDataGridViewTextBoxColumn";
+            // 
+            // quantitiesDataGridViewTextBoxColumn
+            // 
+            this.quantitiesDataGridViewTextBoxColumn.DataPropertyName = "Quantities";
+            this.quantitiesDataGridViewTextBoxColumn.HeaderText = "Quantities";
+            this.quantitiesDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.quantitiesDataGridViewTextBoxColumn.Name = "quantitiesDataGridViewTextBoxColumn";
+            // 
+            // totalDataGridViewTextBoxColumn
+            // 
+            this.totalDataGridViewTextBoxColumn.DataPropertyName = "Total";
+            this.totalDataGridViewTextBoxColumn.HeaderText = "Total";
+            this.totalDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.totalDataGridViewTextBoxColumn.Name = "totalDataGridViewTextBoxColumn";
+            this.totalDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // productNameDataGridViewTextBoxColumn
+            // 
+            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
+            this.productNameDataGridViewTextBoxColumn.HeaderText = "ProductName";
+            this.productNameDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
+            this.productNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bdsOrder
+            // 
+            this.bdsOrder.DataSource = typeof(homework5.Order);
+            this.bdsOrder.CurrentChanged += new System.EventHandler(this.bdsOrder_CurrentChanged);
+            // 
+            // customerDataGridViewTextBoxColumn
+            // 
+            this.customerDataGridViewTextBoxColumn.DataPropertyName = "Customer";
+            this.customerDataGridViewTextBoxColumn.HeaderText = "Customer";
+            this.customerDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.customerDataGridViewTextBoxColumn.Name = "customerDataGridViewTextBoxColumn";
+            this.customerDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // totalSumDataGridViewTextBoxColumn
+            // 
+            this.totalSumDataGridViewTextBoxColumn.DataPropertyName = "TotalSum";
+            this.totalSumDataGridViewTextBoxColumn.HeaderText = "TotalSum";
+            this.totalSumDataGridViewTextBoxColumn.MinimumWidth = 6;
+            this.totalSumDataGridViewTextBoxColumn.Name = "totalSumDataGridViewTextBoxColumn";
+            this.totalSumDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // bdsCustomer
+            // 
+            this.bdsCustomer.DataSource = this.bdsOrder;
+            // 
+            // bdsDetails
+            // 
+            this.bdsDetails.DataMember = "Details";
+            this.bdsDetails.DataSource = this.bdsOrder;
+            // 
             // AddAndChange
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1587, 785);
+            this.ClientSize = new System.Drawing.Size(1785, 942);
             this.Controls.Add(this.tableLayoutPanel7);
             this.Controls.Add(this.tableLayoutPanel2);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AddAndChange";
             this.Text = "AddAndChange";
-            ((System.ComponentModel.ISupportInitialize)(this.bdsCustomer)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsOrder)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.bdsDetails)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -485,6 +594,9 @@
             this.tableLayoutPanel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bdsOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsCustomer)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsDetails)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -510,8 +622,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button_add;
+        private System.Windows.Forms.Button button_change;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridView Orderview;
@@ -526,5 +638,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Product;
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantities;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn detailIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn orderDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn quantitiesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
     }
 }
